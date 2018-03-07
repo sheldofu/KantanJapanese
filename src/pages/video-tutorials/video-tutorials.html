@@ -14,9 +14,10 @@
 
 
 <ion-content padding>
-Welcome to the Video Lessons
+<ion-item>Welcome to the Video Lessons</ion-item>
 	<ion-list>
-		<ion-item>Lesson 1: Introductions</ion-item>
-		<ion-item>Lesson 2: Where are you from?</ion-item>
+		<ion-item *ngFor="let lesson of (playlist | async)?.playlist; let i = index" (click)="openVideo(lesson.uid)">
+			Lesson {{i + 1}}: {{lesson.name}}
+		</ion-item>
 	</ion-list>
 </ion-content>
