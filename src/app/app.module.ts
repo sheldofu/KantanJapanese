@@ -3,9 +3,12 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Media } from '@ionic-native/media';
+import { File } from '@ionic-native/file';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { VideoTutorialsPage } from '../pages/video-tutorials/video-tutorials';
+import { RecorderPage } from '../pages/recorder/recorder';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -17,7 +20,8 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
   declarations: [
     MyApp,
     HomePage,
-    VideoTutorialsPage
+    VideoTutorialsPage,
+    RecorderPage
   ],
   imports: [
     BrowserModule,
@@ -28,14 +32,17 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
   entryComponents: [
     MyApp,
     HomePage,
-    VideoTutorialsPage
+    VideoTutorialsPage,
+    RecorderPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     YoutubeVideoPlayer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    VideoServiceProvider
+    VideoServiceProvider,
+    Media,
+    File
   ]
 })
 export class AppModule {}

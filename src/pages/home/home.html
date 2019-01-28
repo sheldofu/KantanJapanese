@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Yasashii Japanese
+      Kantan Japanese
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="openPage()">
+  <button ion-button (click)="openPage('VideoTutorialsPage')">
   	Video Lessons
   	<ion-icon name="youtube"></ion-icon>
+  </button>
+  <button ion-button (click)="openPage('RecorderPage')">
+  	Voice Recorder
+  	<ion-icon name="microphone"></ion-icon>
   </button>
 </ion-content>

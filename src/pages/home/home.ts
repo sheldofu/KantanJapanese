@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
 
 import { VideoTutorialsPage } from '../video-tutorials/video-tutorials';
+import { RecorderPage } from '../recorder/recorder';
 
 @Component({
   selector: 'page-home',
@@ -14,8 +15,9 @@ export class HomePage {
 
   }
 
-  openPage() { 	
-  	this.navCtrl.push(VideoTutorialsPage);
+  openPage(page) { 	
+  	//this.navCtrl.push(VideoTutorialsPage);
+  	this.navCtrl.push(RecorderPage);
   }
 
 }
