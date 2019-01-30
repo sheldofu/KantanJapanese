@@ -16,11 +16,11 @@
 <ion-content padding>
   <h2>{{status}}</h2>
   <p>
-    <button ion-button (click)="startRecording()" *ngIf="!recording"><ion-icon name="microphone"></ion-icon> Start recording</button>
-    <button ion-button (click)="stopRecording()" *ngIf="recording">Stop recording</button>
+    <button ion-button (click)="startRec()" *ngIf="!noteRecorder.recording"><ion-icon name="microphone"></ion-icon> Start recording</button>
+    <button ion-button (click)="stopRec()" *ngIf="noteRecorder.recording">Stop recording</button>
   </p>
   <p>
-    <button ion-button (click)="startPlayback()" *ngIf="!playing">Start playback</button>
-    <button ion-button (click)="stopPlayback()" *ngIf="playing">Stop playback</button>
+    <button ion-button (click)="startPlay()" *ngIf="!noteRecorder.playing">Start playback</button>
+    <button ion-button (click)="stopPlay()" *ngIf="noteRecorder.playing">Stop playback</button>
   </p>
 </ion-content>
