@@ -11,6 +11,8 @@ export class RecorderPage {
 
 	status: string;
 	filePath: string;
+	recording: Boolean;
+	playing: Boolean;
 	note: MediaObject;
 
 	constructor(public navCtrl: NavController, 
@@ -18,30 +20,31 @@ export class RecorderPage {
 		public alertCtrl: AlertController,
 		private media: Media,
 		private file: File) {
-			this.status = 'nothing';
+			this.recording = false;
+			this.playing = false;
 	}
 
 	ionViewDidEnter() {
 	}
 
 	startRecording() {
-	try {
-		this.filePath = "sherunu.3gp";
-		this.note = this.media.create(this.filePath);
-		this.note.startRecord();
-		this.status = 'recording';
-		}
-	catch (e) {
-		this.showAlert('Could not start recording.');
-		}
+		try {
+			this.filePath = "sherunu.3gp";
+			this.note = this.media.create(this.filePath);
+			this.note.startRecord();
+			this.recording = true;
+			}
+		catch (e) {
+			this.showAlert('Could not start recording.');
+			}
 	}
 
 	stopRecording() {
 		try {
 			this.note.stopRecord();
-			this.status = 'stopped recording';
+			this.recording = false;
 		}
-	catch (e) {
+		catch (e) {
 			this.showAlert('Could not stop recording.');
 		}
 	}
@@ -49,7 +52,7 @@ export class RecorderPage {
 	startPlayback() {
 		try {
 			this.note.play();
-			this.status = 'playing';
+			this.playing = true;
 		}
 		catch (e) {
 			this.showAlert('Could not play recording.');
@@ -59,7 +62,7 @@ export class RecorderPage {
 	stopPlayback() {
 		try {
 			this.note.stop();
-			this.status = 'stopped playing';
+			this.playing = false;
 		}
 		catch (e) {
 			this.showAlert('Could not stop playing recording.');
