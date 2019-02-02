@@ -5,10 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
+import { SQLite } from '@ionic-native/sqlite';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { VideoTutorialsPage } from '../pages/video-tutorials/video-tutorials';
 import { RecorderPage } from '../pages/recorder/recorder';
+
+import { NoteListPage} from '../pages/note-list/note-list';
+import { NoteAddPage} from '../pages/note-add/note-add';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -21,7 +25,9 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     MyApp,
     HomePage,
     VideoTutorialsPage,
-    RecorderPage
+    RecorderPage,
+    NoteListPage,
+    NoteAddPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,9 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     MyApp,
     HomePage,
     VideoTutorialsPage,
-    RecorderPage
+    RecorderPage,
+    NoteListPage,
+    NoteAddPage
   ],
   providers: [
     StatusBar,
@@ -42,7 +50,8 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     VideoServiceProvider,
     Media,
-    File
+    File,
+    SQLite
   ]
 })
 export class AppModule {}
