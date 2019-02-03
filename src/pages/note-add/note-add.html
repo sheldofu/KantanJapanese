@@ -14,5 +14,27 @@
 
 
 <ion-content padding>
-
+	<form (ngSubmit)="addNote()">
+		<ion-item>
+			<ion-label>English</ion-label>
+			<ion-input type="text" [(ngModel)]="note.english" name="english" required ></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Japanese</ion-label>
+			<ion-input type="text" [(ngModel)]="note.japanese" name="japanese" required ></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Audio</ion-label>
+			<ion-input type="text" [(ngModel)]="note.audio" name="audio" ></ion-input>
+			<p>
+				<button ion-button (click)="startRec()" *ngIf="!noteRecorder.recording"><ion-icon name="microphone"></ion-icon> Start recording</button>
+				<button ion-button (click)="stopRec()" *ngIf="noteRecorder.recording">Stop recording</button>
+			</p>
+			<p>
+				<button ion-button (click)="startPlay()" *ngIf="!noteRecorder.playing">Start playback</button>
+				<button ion-button (click)="stopPlay()" *ngIf="noteRecorder.playing">Stop playback</button>
+			</p>
+		</ion-item>
+		<button ion-button type="submit" block>Add Note</button>
+	</form>
 </ion-content>

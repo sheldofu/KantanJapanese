@@ -14,7 +14,18 @@
 
 
 <ion-content padding>
-	{{status}}
-	<button ion-button (click)="getNotes()">Load List</button>
-	<button ion-button (click)="addNote()">Submit Item</button>
+	<ion-list>
+		<ion-item *ngFor="let note of notes; let i = index">
+			{{note.english}}<br>
+			{{note.japanese}}<br>
+			{{note.audio}}
+			<button ion-button color="primary">
+				<ion-icon name="paper"></ion-icon>
+			</button>
+			<button ion-button color="danger" (click)="deleteNote(note.id)">
+				<ion-icon name="trash"></ion-icon>
+			</button>
+		</ion-item>
+	</ion-list>
+	<button ion-button (click)="gotoAdd()">Add new</button>
 </ion-content>

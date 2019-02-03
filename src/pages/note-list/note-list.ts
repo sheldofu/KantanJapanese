@@ -48,23 +48,27 @@ export class NoteListPage {
 		});		
 	}
 
-	addNote() {
+	gotoAdd() {
+		this.navCtrl.push(NoteAddPage);
+	}
+
+	deleteNote(id) {
 		this.sqLite.create({
 			name: 'notes.db',
 			location: 'default',
 		}).then((db: SQLiteObject) => {
-			db.executeSql('INSERT INTO notes VALUES(NULL,?,?,?)',['test','test2','test3'])
-				.then(res => {
-					console.log(res);
-					this.status = "" + res;
-				});
-			}
-		)
+			db.executeSql('DELETE FROM notes WHERE rowid=?', [id])
+			.then(res => {
+				console.log(res);
+				this.getNotes();
+			})
+			.catch(e => console.log(e));
+			}).catch(e => console.log(e));
 	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NoteListPage');
-	this.getNotes();
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad NoteListPage');
+		this.getNotes();
+	}
 
 }
