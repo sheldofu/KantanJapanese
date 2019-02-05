@@ -11,6 +11,7 @@ import { NoteRecorder } from '../../providers/note-recorder-service/note-recorde
 export class NoteAddPage {
 
 	note = { english: '', japanese: '', audio: '' };
+	fileName: String = "";
 
 	constructor(
 		public navCtrl: NavController, 
@@ -19,6 +20,12 @@ export class NoteAddPage {
 		public noteRecorder: NoteRecorder
 	) {
 
+	}
+
+	startRecording() {
+		this.note.audio = (Math.random() + 1).toString(36).substring(5);
+		console.log(this.note.audio);
+		this.noteRecorder.startRecording(this.note.audio + ".3gp");
 	}
 
 	addNote() {

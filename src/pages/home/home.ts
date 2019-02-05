@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
 
 import { VideoTutorialsPage } from '../video-tutorials/video-tutorials';
-import { RecorderPage } from '../recorder/recorder';
 import { NoteListPage } from '../note-list/note-list';
 
 @Component({

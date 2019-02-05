@@ -1,5 +1,5 @@
 <!--
-  Generated template for the NoteAddPage page.
+  Generated template for the NoteEditPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,14 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>note-add</ion-title>
+    <ion-title>note-edit</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<form (ngSubmit)="addNote()">
+	<h2>Edit Data</h2>
+	<form (ngSubmit)="updateData()">
 		<ion-item>
 			<ion-label>English</ion-label>
 			<ion-input type="text" [(ngModel)]="note.english" name="english" required ></ion-input>
@@ -28,15 +29,18 @@
 			<ion-input type="text" [(ngModel)]="note.audio" name="audio" ></ion-input>>
 		</ion-item> -->
 		<ion-item>
-			<p>
+			<!-- <p>
 				<button ion-button (click)="startRecording()" *ngIf="!noteRecorder.recording"><ion-icon name="microphone"></ion-icon> Start recording</button>
 				<button ion-button (click)="noteRecorder.stopRecording()" *ngIf="noteRecorder.recording">Stop recording</button>
-			</p>
+			</p> -->
 			<p>
 				<button ion-button (click)="noteRecorder.startPlaying()" *ngIf="!noteRecorder.playing">Start playback</button>
 				<button ion-button (click)="noteRecorder.stopPlaying()" *ngIf="noteRecorder.playing">Stop playback</button>
 			</p>
 		</ion-item>
-		<button ion-button type="submit" block>Add Note</button>
+	<ion-input type="hidden" [(ngModel)]="note.id" name="id"></ion-input>
+	<button ion-button type="submit" block>Update Note</button>
 	</form>
 </ion-content>
+
+

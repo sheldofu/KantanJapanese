@@ -9,10 +9,9 @@ import { SQLite } from '@ionic-native/sqlite';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { VideoTutorialsPage } from '../pages/video-tutorials/video-tutorials';
-import { RecorderPage } from '../pages/recorder/recorder';
-
 import { NoteListPage} from '../pages/note-list/note-list';
 import { NoteAddPage} from '../pages/note-add/note-add';
+import { NoteEditPage} from '../pages/note-edit/note-edit';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -25,9 +24,9 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     MyApp,
     HomePage,
     VideoTutorialsPage,
-    RecorderPage,
     NoteListPage,
-    NoteAddPage
+    NoteAddPage,
+    NoteEditPage
   ],
   imports: [
     BrowserModule,
@@ -39,9 +38,9 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     MyApp,
     HomePage,
     VideoTutorialsPage,
-    RecorderPage,
     NoteListPage,
-    NoteAddPage
+    NoteAddPage,
+    NoteEditPage
   ],
   providers: [
     StatusBar,

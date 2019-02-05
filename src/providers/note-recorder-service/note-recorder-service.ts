@@ -6,7 +6,6 @@ import { File } from '@ionic-native/file';
 @Injectable()
 export class NoteRecorder {
 
-	filePath: string;
 	recording: Boolean;
 	playing: Boolean;
 	note: MediaObject;
@@ -19,10 +18,9 @@ export class NoteRecorder {
 			this.playing = false;
 	}
 
-	startRecording() {
+	startRecording(fileName) {
 		try {
-			this.filePath = "sherunu2.3gp";
-			this.note = this.media.create(this.filePath);
+			this.note = this.media.create(fileName);
 			this.note.startRecord();
 			this.recording = true;
 			}
@@ -59,6 +57,10 @@ export class NoteRecorder {
 		catch (e) {
 			this.showAlert('Could not stop playing recording.');
 		}
+	}
+
+	loadMedia(fileName) {
+		this.note = this.media.create(fileName + ".3gp");
 	}
 
   showAlert(message) {

@@ -19,7 +19,7 @@
 			{{note.english}}<br>
 			{{note.japanese}}<br>
 			{{note.audio}}
-			<button ion-button color="primary">
+			<button ion-button color="primary" (click)="gotoEdit(note.id)">
 				<ion-icon name="paper"></ion-icon>
 			</button>
 			<button ion-button color="danger" (click)="deleteNote(note.id)">

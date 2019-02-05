@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { NoteAddPage } from '../note-add/note-add';
-
+import { NoteEditPage } from '../note-edit/note-edit';
 
 @Component({
   selector: 'page-note-list',
@@ -52,12 +52,16 @@ export class NoteListPage {
 		this.navCtrl.push(NoteAddPage);
 	}
 
+	gotoEdit(id) {
+		this.navCtrl.push(NoteEditPage, {id:id});
+	}
+
 	deleteNote(id) {
 		this.sqLite.create({
 			name: 'notes.db',
 			location: 'default',
 		}).then((db: SQLiteObject) => {
-			db.executeSql('DELETE FROM notes WHERE rowid=?', [id])
+			db.executeSql('DELETE FROM notes WHERE id=?', [id])
 			.then(res => {
 				console.log(res);
 				this.getNotes();
