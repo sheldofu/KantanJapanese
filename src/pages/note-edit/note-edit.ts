@@ -25,7 +25,11 @@ export class NoteEditPage {
 		public navCtrl: NavController, 
 		public navParams: NavParams) {
 			this.getNote(navParams.get("id"));
-			this.noteRecorder.loadMedia(this.note.audio);
+	}
+
+	startPlaying(){
+		this.noteRecorder.loadMedia(this.note.audio);
+		this.noteRecorder.startPlaying();
 	}
 
 	getNote(id) {

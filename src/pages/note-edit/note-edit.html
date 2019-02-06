@@ -15,7 +15,7 @@
 
 <ion-content padding>
 	<h2>Edit Data</h2>
-	<form (ngSubmit)="updateData()">
+	<form (ngSubmit)="updateNote()">
 		<ion-item>
 			<ion-label>English</ion-label>
 			<ion-input type="text" [(ngModel)]="note.english" name="english" required ></ion-input>
@@ -34,7 +34,7 @@
 				<button ion-button (click)="noteRecorder.stopRecording()" *ngIf="noteRecorder.recording">Stop recording</button>
 			</p> -->
 			<p>
-				<button ion-button (click)="noteRecorder.startPlaying()" *ngIf="!noteRecorder.playing">Start playback</button>
+				<button ion-button (click)="startPlaying()" *ngIf="!noteRecorder.playing">Start playback</button>
 				<button ion-button (click)="noteRecorder.stopPlaying()" *ngIf="noteRecorder.playing">Stop playback</button>
 			</p>
 		</ion-item>
