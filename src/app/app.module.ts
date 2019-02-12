@@ -12,6 +12,7 @@ import { VideoTutorialsPage } from '../pages/video-tutorials/video-tutorials';
 import { NoteListPage} from '../pages/note-list/note-list';
 import { NoteAddPage} from '../pages/note-add/note-add';
 import { NoteEditPage} from '../pages/note-edit/note-edit';
+import { GrammarListPage } from '../pages/grammar-list/grammar-list';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -26,7 +27,8 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     VideoTutorialsPage,
     NoteListPage,
     NoteAddPage,
-    NoteEditPage
+    NoteEditPage,
+    GrammarListPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     VideoTutorialsPage,
     NoteListPage,
     NoteAddPage,
-    NoteEditPage
+    NoteEditPage,
+    GrammarListPage
   ],
   providers: [
     StatusBar,

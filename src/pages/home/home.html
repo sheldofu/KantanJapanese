@@ -7,12 +7,15 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="openPage('VideoTutorialsPage')">
+  <button ion-button (click)="openVideoPage()">
   	Video Lessons
   	<ion-icon name="youtube"></ion-icon>
   </button>
-  <button ion-button (click)="openPage('RecorderPage')">
-  	Voice Recorder
+  <button ion-button (click)="openNoteListPage()">
+  	Translation List
   	<ion-icon name="microphone"></ion-icon>
+  </button>
+  <button ion-button (click)="openGrammarPage()">
+    Grammar List
   </button>
 </ion-content>

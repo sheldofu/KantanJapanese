@@ -36,6 +36,7 @@ export class NoteAddPage {
 			db.executeSql('INSERT INTO notes VALUES(NULL,?,?,?)',[this.note.english,this.note.japanese,this.note.audio])
 				.then(res => {
 					console.log(res);
+					this.navCtrl.pop();
 				});
 			}
 		)

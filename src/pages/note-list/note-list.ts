@@ -11,7 +11,6 @@ import { NoteEditPage } from '../note-edit/note-edit';
 export class NoteListPage {
 
   notes: any = [];
-  status: string = "none";
 
   constructor(
 		public navCtrl: NavController, 
@@ -22,6 +21,7 @@ export class NoteListPage {
 	}
 
 	getNotes() {
+		this.notes = [];
 		this.sqLite.create({
 			name: 'notes.db',
 			location: 'default',
@@ -29,7 +29,6 @@ export class NoteListPage {
 			db.executeSql('CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, english TEXT, japanese TEXT, audio TEXT)', [])
 			.then(res => {
 				console.log('created table') 
-				this.status = "created table"
 			})
     		.catch(e => console.log(e));
     		db.executeSql('SELECT * FROM notes ORDER BY id DESC', [])
@@ -70,8 +69,7 @@ export class NoteListPage {
 			}).catch(e => console.log(e));
 	}
 
-	ionViewDidLoad() {
-		console.log('ionViewDidLoad NoteListPage');
+	ionViewWillEnter() {
 		this.getNotes();
 	}
 
