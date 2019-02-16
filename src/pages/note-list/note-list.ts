@@ -47,6 +47,31 @@ export class NoteListPage {
 		});		
 	}
 
+	getFilteredNotes(inputEvent) {
+
+		this.notes = [];
+		const searchString = inputEvent.target.value;
+		
+		this.sqLite.create({
+			name: 'notes.db',
+			location: 'default',
+		}).then((db: SQLiteObject) => {
+			db.executeSql('SELECT * FROM notes WHERE english LIKE ? ORDER BY id DESC', [searchString + '%'])
+		    .then(res => {
+				for(var i = 0; i < res.rows.length; i++) {
+					this.notes.push({
+						id: res.rows.item(i).id,
+						english: res.rows.item(i).english,
+						japanese: res.rows.item(i).japanese,
+						audio: res.rows.item(i).audio
+					})
+				}
+				console.log(this.notes);
+			})
+			.catch(e => console.log(e));
+    	});
+	}
+
 	gotoAdd() {
 		this.navCtrl.push(NoteAddPage);
 	}
