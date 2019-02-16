@@ -7,15 +7,28 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="openVideoPage()">
-  	Video Lessons
-  	<ion-icon name="youtube"></ion-icon>
-  </button>
-  <button ion-button (click)="openNoteListPage()">
-  	Translation List
-  	<ion-icon name="microphone"></ion-icon>
-  </button>
-  <button ion-button (click)="openGrammarPage()">
-    Grammar List
-  </button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button full (click)="openVideoPage()">
+        	Video Lessons
+        	<ion-icon name="youtube"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button full icon-start (click)="openNoteListPage()">
+        	<ion-icon name="microphone"></ion-icon>
+          Translation List	
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button full icon-end (click)="openGrammarPage()">
+          Grammar List
+          <ion-icon name="book" color="vibrant"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
