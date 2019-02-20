@@ -23,10 +23,6 @@
 			<ion-label>Japanese</ion-label>
 			<ion-input type="text" [(ngModel)]="note.japanese" name="japanese" required ></ion-input>
 		</ion-item>
-		<!-- <ion-item>
-			<ion-label>Audio</ion-label>
-			<ion-input type="text" [(ngModel)]="note.audio" name="audio" ></ion-input>>
-		</ion-item> -->
 		<ion-item>
 			<p>
 				<button ion-button (click)="startRecording()" *ngIf="!noteRecorder.recording"><ion-icon name="microphone"></ion-icon> Start recording</button>

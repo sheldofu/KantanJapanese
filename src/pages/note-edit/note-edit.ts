@@ -27,6 +27,10 @@ export class NoteEditPage {
 			this.getNote(navParams.get("id"));
 	}
 
+	startRecording() {
+		this.noteRecorder.startRecording(this.note.audio + ".3gp");
+	}
+
 	startPlaying(){
 		this.noteRecorder.loadMedia(this.note.audio);
 		this.noteRecorder.startPlaying();
@@ -50,6 +54,20 @@ export class NoteEditPage {
 			.catch(e => console.log(e));
 			}
 		).catch(e => console.log(e));
+	}
+
+	updateNote() {
+		this.sqLite.create({
+			name: 'notes.db',
+			location: 'default',
+		}).then((db: SQLiteObject) => {
+			db.executeSql('UPDATE notes SET english=?,japanese=? WHERE id=?',[this.note.english,this.note.japanese,this.note.id])
+			.then(res => {
+				this.navCtrl.pop();
+			})
+			.catch(e => console.log(e));
+		})
+		.catch(e => console.log(e));
 	}
 
 	ionViewDidLoad() {
