@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-import { VideoServiceProvider } from '../../providers/video-service/video-service';
+import { RestServiceProvider } from '../../providers/video-service/video-service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -20,8 +20,8 @@ export class VideoTutorialsPage {
 
   playlist: Observable<any>
 
-  constructor(public videoService: VideoServiceProvider, public navCtrl: NavController, public navParams: NavParams, private youtube: YoutubeVideoPlayer) {
-    this.playlist = this.videoService.getPlaylist();
+  constructor(public videoService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams, private youtube: YoutubeVideoPlayer) {
+    this.playlist = this.videoService.getLessons();
     console.log(this.playlist);
   }
 

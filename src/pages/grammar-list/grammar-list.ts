@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { RestServiceProvider } from '../../providers/video-service/video-service';
+
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-grammar-list',
@@ -7,7 +11,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GrammarListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  grammarList: Observable<any>;
+
+  constructor(public videoService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.grammarList = this.videoService.getLessons();
+    console.log(this.grammarList);
   }
 
   ionViewDidLoad() {
@@ -15,3 +23,4 @@ export class GrammarListPage {
   }
 
 }
+

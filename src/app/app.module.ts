@@ -18,7 +18,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { VideoServiceProvider } from '../providers/video-service/video-service';
+import { RestServiceProvider } from '../providers/video-service/video-service';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,7 @@ import { VideoServiceProvider } from '../providers/video-service/video-service';
     SplashScreen,
     YoutubeVideoPlayer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    VideoServiceProvider,
+    RestServiceProvider,
     Media,
     File,
     SQLite

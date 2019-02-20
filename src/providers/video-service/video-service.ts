@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClient } from '@angular/common/http'; 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
+//import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
  
 /*
-  Generated class for the VideoServiceProvider provider.
+  Generated class for the RestServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
@@ -14,17 +14,22 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class VideoServiceProvider {
+export class RestServiceProvider {
 
-	getApiUrl: string = "assets/data/playlist.json"; //file:///android_asset/www/
+  getApiUrl: string = "http://localhost:3000/grammarList"
+	//getApiUrl: string = "assets/data/grammarlist.json"; //file:///android_asset/www/
 
-  constructor(public http: HttpClient) {
-    console.log('Hello VideoServiceProvider Provider');
+  constructor(public httpClient: HttpClient) {
+    console.log('Hello RestServiceProvider Provider');
   }
 
-  getPlaylist() {
-	  return this.http.get(this.getApiUrl);
-  }    
+  getLessons(): Observable<any>{
+	  return this.httpClient.get(this.getApiUrl);
+  }
+
+  getLessonById() {
+
+  }
 
 }
 

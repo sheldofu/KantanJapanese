@@ -1,0 +1,34 @@
+{
+	"grammarList": [
+		{
+			"lessonName": "Dake",
+			"level": 5,
+			"summary":"Dake means only",
+			"examples": [
+				{
+					"english":"only cute",
+					"japanese":"kawaii dake"
+				},
+				{
+					"english":"only",
+					"japanese":"dake"	
+				}
+			]
+		},
+		{
+			"lessonName": "Buhi",
+			"level": 5,
+			"summary":"Buhi means buhi",
+			"examples": [
+				{
+					"english":"only buhi",
+					"japanese":"kawaii buhi"
+				},
+				{
+					"english":"buhi",
+					"japanese":"buhi"	
+				}
+			]
+		}
+	]
+}
