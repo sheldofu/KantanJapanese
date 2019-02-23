@@ -16,9 +16,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestServiceProvider {
 
-  getApiUrl: string = "http://localhost:3000/grammarList"
-	//getApiUrl: string = "assets/data/grammarlist.json"; //file:///android_asset/www/
-
+  getApiUrl: string = "http://demo4488197.mockable.io/";
+  
   constructor(public httpClient: HttpClient) {
     console.log('Hello RestServiceProvider Provider');
   }

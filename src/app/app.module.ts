@@ -18,7 +18,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { RestServiceProvider } from '../providers/video-service/video-service';
+import { RestServiceProvider } from '../providers/rest-service/rest-service';
 
 @NgModule({
   declarations: [

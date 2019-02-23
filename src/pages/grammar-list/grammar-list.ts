@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { RestServiceProvider } from '../../providers/video-service/video-service';
+import { RestServiceProvider } from '../../providers/rest-service/rest-service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -29,12 +29,30 @@ export class GrammarListPage {
   }
 
   updateGrammar() {
-    this.videoService.getLessons().subscribe(function onNext(result) {
-      this.grammarListLatest = result;
-      console.log(this.grammarListLatest);  
+    this.videoService.getLessons().map(result => result).subscribe((result: any) => {
+      this.grammarListLatest = result; 
+      console.log(result);
+      this.storeUpdate(); 
+      this.getGrammar();
     }, function onError(error) {
       console.log('gone wrong')
-    });
+    }           
+   );
+  }
+
+  storeUpdate() {
+    this.sqLite.create({
+          name: 'notes.db',
+          location: 'default',
+        }).then((db: SQLiteObject) => {
+            for (var x = 0; x < this.grammarListLatest.grammarList.length; x++) {
+              db.executeSql('INSERT INTO grammar VALUES(?,?,?,?,?)', [this.grammarListLatest.grammarList[x].lessonID, this.grammarListLatest.grammarList[x].lessonName, 1, "r", "c"])
+            }
+          })
+          .then(res => {
+            console.log('created table', this.grammarListLatest) 
+          }) 
+          .catch(e => console.log(e));
   }
 
   getGrammar() {
@@ -50,7 +68,7 @@ export class GrammarListPage {
         lessonText TEXT
        )`, [])
       .then(res => {
-        console.log('created table') 
+        console.log('created table xyz') 
       })
       .catch(e => console.log(e));
       
@@ -69,7 +87,6 @@ export class GrammarListPage {
       })
       .catch(e => console.log(e))
       .then(() => {
-        console.log('test');
         if (this.grammarList.length == 0) {
           console.log('grammar list empty, calling API')
           this.updateGrammar();

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-import { RestServiceProvider } from '../../providers/video-service/video-service';
+import { RestServiceProvider } from '../../providers/rest-service/rest-service';
 
 import { Observable } from 'rxjs/Observable';
 
