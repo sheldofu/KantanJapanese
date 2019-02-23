@@ -42,9 +42,9 @@ export class NoteEditPage {
 			location: 'default',
 		}).then((db: SQLiteObject) => {
 			db.executeSql('SELECT * FROM notes where id=?',[id])
-		    .then(res => {
+			.then(res => {
 				if(res.rows.length > 0) {
-			            this.note.id = res.rows.item(0).id;
+						this.note.id = res.rows.item(0).id;
 						this.note.english = res.rows.item(0).english;
 						this.note.japanese = res.rows.item(0).japanese;
 						this.note.audio = res.rows.item(0).audio;

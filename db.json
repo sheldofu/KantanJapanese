@@ -1,6 +1,7 @@
 {
 	"grammarList": [
 		{
+			"lessonID": 1,
 			"lessonName": "Dake",
 			"level": 5,
 			"summary":"Dake means only",
@@ -16,6 +17,7 @@
 			]
 		},
 		{
+			"lessonID": 2,
 			"lessonName": "Buhi",
 			"level": 5,
 			"summary":"Buhi means buhi",
