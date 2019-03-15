@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>grammar-view</ion-title>
+    <ion-title>{{grammar.lessonName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	<h1>{{grammar.lessonName}}</h1>
+	<div>{{grammar.summary}}</div>    
+	<ion-item *ngFor="let example of grammar.examples; let i = index">
+		<div>{{example.english}}</div>
+		<div>{{example.japanese}}</div>
+	</ion-item>
 </ion-content>

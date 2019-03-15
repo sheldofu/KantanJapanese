@@ -13,17 +13,25 @@ import { NoteRecorder } from '../../providers/note-recorder-service/note-recorde
 @Component({
   selector: 'page-grammar-view',
   templateUrl: 'grammar-view.html',
+  providers: [NoteRecorder]
 })
 export class GrammarViewPage {
 
-	grammar = { lessonID: 0 };
+	grammar = { 
+		lessonID: 0,
+		lessonName: "",
+		level: 0,
+		summary: "",
+		lessonText: "",
+		examples: []
+	};
 
 	constructor(
 		public noteRecorder: NoteRecorder, 
 		private sqLite: SQLite, 
 		public navCtrl: NavController, 
 		public navParams: NavParams) {
-			this.getGrammar(navParams.get("id"));
+			this.getGrammar(navParams.get("lessonID"));
 	}
 
 	getGrammar(id) {
@@ -31,16 +39,30 @@ export class GrammarViewPage {
 			name: 'notes.db',
 			location: 'default',
 		}).then((db: SQLiteObject) => {
-			db.executeSql('SELECT * FROM grammar where id=?',[id])
+			db.executeSql('SELECT * FROM grammar where lessonID=?',[id])
 			.then(res => {
 				if(res.rows.length > 0) {
-						this.grammar.lessonID = res.rows.item(0).lessonID;
+					this.grammar.lessonID = res.rows.item(0).lessonID;
+					this.grammar.lessonName = res.rows.item(0).lessonName,
+					this.grammar.level = res.rows.item(0).level,
+					this.grammar.summary = res.rows.item(0).summary,
+					this.grammar.lessonText = res.rows.item(0).lessonText
 				}
 				console.log(this.grammar);
 			})
 			.catch(e => console.log(e));
-			}
-		).catch(e => console.log(e));
+			
+			db.executeSql('SELECT * FROM examples where lessonID=?',[id])
+			.then(res => {
+				for(var i = 0; i < res.rows.length; i++) {
+				  this.grammar.examples[i].push({
+					english: res.rows.item(i).english,
+					japanese: res.rows.item(i).japanese,
+				  })
+				}
+			})
+			
+		}).catch(e => console.log(e));
 	}
 
   ionViewDidLoad() {

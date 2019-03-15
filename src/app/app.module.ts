@@ -13,6 +13,7 @@ import { NoteListPage} from '../pages/note-list/note-list';
 import { NoteAddPage} from '../pages/note-add/note-add';
 import { NoteEditPage} from '../pages/note-edit/note-edit';
 import { GrammarListPage } from '../pages/grammar-list/grammar-list';
+import { GrammarViewPage } from '../pages/grammar-view/grammar-view';
 
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -28,7 +29,8 @@ import { RestServiceProvider } from '../providers/rest-service/rest-service';
     NoteListPage,
     NoteAddPage,
     NoteEditPage,
-    GrammarListPage
+    GrammarListPage,
+    GrammarViewPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { RestServiceProvider } from '../providers/rest-service/rest-service';
     NoteListPage,
     NoteAddPage,
     NoteEditPage,
-    GrammarListPage
+    GrammarListPage,
+    GrammarViewPage
   ],
   providers: [
     StatusBar,
