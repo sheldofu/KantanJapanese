@@ -46,7 +46,8 @@ export class GrammarViewPage {
 					this.grammar.lessonName = res.rows.item(0).lessonName,
 					this.grammar.level = res.rows.item(0).level,
 					this.grammar.summary = res.rows.item(0).summary,
-					this.grammar.lessonText = res.rows.item(0).lessonText
+					this.grammar.lessonText = res.rows.item(0).lessonText,
+					this.grammar.examples = [];
 				}
 				console.log(this.grammar);
 			})
@@ -55,7 +56,7 @@ export class GrammarViewPage {
 			db.executeSql('SELECT * FROM examples where lessonID=?',[id])
 			.then(res => {
 				for(var i = 0; i < res.rows.length; i++) {
-				  this.grammar.examples[i].push({
+				  this.grammar.examples.push({
 					english: res.rows.item(i).english,
 					japanese: res.rows.item(i).japanese,
 				  })
