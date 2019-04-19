@@ -21,8 +21,7 @@ export class VideoTutorialsPage {
   playlist: Observable<any>
 
   constructor(public videoService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams, private youtube: YoutubeVideoPlayer) {
-    this.playlist = this.videoService.getLessons();
-    console.log(this.playlist);
+
   }
 
 	openVideo() {

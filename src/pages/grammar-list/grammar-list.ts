@@ -16,29 +16,43 @@ export class GrammarListPage {
 
 	grammarListLatest: any = [] //Observable<any>;
 	grammarList: any = [];
+	token: string;
 
-	constructor(public videoService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams, private sqLite: SQLite) {
+	constructor(public restService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams, private sqLite: SQLite) {
 		this.getGrammar();
+		this.checkLatest(); //just for testing
 	}
 
 
 	checkLatest() {
-		//console.log(this.grammarList);
-		//for (var key in this.grammarList) {
-		//  if (this.grammarList.hasOwnProperty(key)) {
-		//    this.grammarList[key]
-		//  }
-		// }
+		this.restService.authenticate()
+		.map(result => result)
+		.subscribe((result: any) => {
+			
+			console.log(result);
+			this.token = result.token;
+
+			this.restService.getLessons(this.token)
+			.map(result => result)
+			.subscribe((result: any) => {
+				this.grammarListLatest = result; 
+				console.log ("dun dun it", this.grammarListLatest);
+			}, function onError(error) {
+				console.log('error in lesson get', error)
+			});		
+		}, function onError(error) {
+			console.log('error in authentication:', error);
+		});
 	}
 
 	updateGrammar() {
-		this.videoService.getLessons().map(result => result).subscribe((result: any) => {
-			this.grammarListLatest = result; 
-			this.storeUpdate(); 
-			this.getGrammar();
-		}, function onError(error) {
-			console.log('gone wrong')
-		});
+		// this.restService.getLessons(token).map(result => result).subscribe((result: any) => {
+		// 	this.grammarListLatest = result; 
+		// 	this.storeUpdate(); 
+		// 	this.getGrammar();
+		// }, function onError(error) {
+		// 	console.log('gone wrong')
+		// });
 	}
 
 	storeUpdate() {

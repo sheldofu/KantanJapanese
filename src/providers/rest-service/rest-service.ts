@@ -16,19 +16,26 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestServiceProvider {
 
-  getApiUrl: string = "http://demo4488197.mockable.io/";
+	apiDomain: string = "http://kantan-api.herokuapp.com/";
   
-  constructor(public httpClient: HttpClient) {
-    console.log('Hello RestServiceProvider Provider');
-  }
+	constructor(public httpClient: HttpClient) {
+		console.log('Hello RestServiceProvider Provider');
+	}
 
-  getLessons(): Observable<any>{
-	  return this.httpClient.get(this.getApiUrl);
-  }
+  	authenticate() {
+		return this.httpClient.post(this.apiDomain + 'token', {
+			username: "admin",
+			password: "dakarananda95"
+		});
+	}
 
-  getLessonById() {
-
-  }
+	getLessons(token): Observable<any>{
+		return this.httpClient.get(this.apiDomain + 'lesson', {
+			headers: {
+				"authorization": token
+			}
+		});
+	}
 
 }
 
