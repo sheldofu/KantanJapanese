@@ -1,8 +1,8 @@
 {
-  "name": "YasashiiJapanese",
+  "name": "kantanjapanese",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Sheldon Marsh",
+  "homepage": "http://the-sheldon.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -32,7 +32,7 @@
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-ionic-webview": "^1.2.1",
+    "cordova-plugin-ionic-webview": "^2.2.0",
     "cordova-plugin-media": "5.0.2",
     "cordova-plugin-splashscreen": "^4.1.0",
     "cordova-plugin-statusbar": "2.4.2",

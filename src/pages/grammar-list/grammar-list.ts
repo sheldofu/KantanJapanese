@@ -20,7 +20,6 @@ export class GrammarListPage {
 
 	constructor(public restService: RestServiceProvider, public navCtrl: NavController, public navParams: NavParams, private sqLite: SQLite) {
 		this.getGrammar();
-		this.checkLatest(); //just for testing
 	}
 
 
@@ -37,6 +36,7 @@ export class GrammarListPage {
 			.subscribe((result: any) => {
 				this.grammarListLatest = result; 
 				console.log ("dun dun it", this.grammarListLatest);
+				this.storeUpdate();
 			}, function onError(error) {
 				console.log('error in lesson get', error)
 			});		
@@ -45,37 +45,47 @@ export class GrammarListPage {
 		});
 	}
 
-	updateGrammar() {
-		// this.restService.getLessons(token).map(result => result).subscribe((result: any) => {
-		// 	this.grammarListLatest = result; 
-		// 	this.storeUpdate(); 
-		// 	this.getGrammar();
-		// }, function onError(error) {
-		// 	console.log('gone wrong')
-		// });
-	}
-
 	storeUpdate() {
 		this.sqLite.create({
 			  name: 'notes.db',
 			  location: 'default',
 			}).then((db: SQLiteObject) => {
-				for (var x = 0; x < this.grammarListLatest.grammarList.length; x++) {
-					db.executeSql('INSERT INTO grammar VALUES(?,?,?,?,?)', [this.grammarListLatest.grammarList[x].lessonID, this.grammarListLatest.grammarList[x].lessonName, this.grammarListLatest.grammarList[x].level, this.grammarListLatest.grammarList[x].summary, this.grammarListLatest.grammarList[x].lessonText])
-					console.log('length' + this.grammarListLatest.grammarList[x].examples.length);
-					for (var z = 0; z < this.grammarListLatest.grammarList[x].examples.length; z++) {
-						db.executeSql('INSERT INTO examples VALUES(NULL,?,?,?,NULL)', [this.grammarListLatest.grammarList[x].lessonID, this.grammarListLatest.grammarList[x].examples[z].english, this.grammarListLatest.grammarList[x].examples[z].japanese])
-						console.log('inside examples loop' + this.grammarListLatest.grammarList[x]);
-					}
-				}
+				this.grammarListLatest.forEach(function(lesson){
+					console.log("lesson", lesson)
+					db.executeSql('SELECT * FROM grammar WHERE lessonID=?',[lesson.lessonID])
+					.then(res => {
+						console.log('row check', res.rows.item(0));
+						if (res.rows.length == 0) {
+							console.log('inserting row');
+							db.executeSql('INSERT INTO grammar VALUES(?,?,?,?,?)', [
+								lesson.lessonID, 
+								lesson.lessonName, 
+								lesson.level, 
+								lesson.summary,
+								lesson.lessonText
+							])
+							//console.log('length' + this.grammarListLatest[x].examples.length);
+							// for (var z = 0; z < this.grammarListLatest[x].examples.length; z++) {
+							// 	db.executeSql('INSERT INTO examples VALUES(NULL,?,?,?,NULL)', [
+							// 		this.grammarListLatest[x].lessonID, 
+							// 		this.grammarListLatest[x].examples[z].english, 
+							// 		this.grammarListLatest[x].examples[z].japanese])
+							// 	console.log('inside examples loop' + this.grammarListLatest[x]);
+							// }
+						}
+					})
+					.catch(e => console.log(e));
+				})
 			})
 			.then(res => {
 				console.log('inserted columns as ', this.grammarListLatest) 
+				this.getGrammar();
 			}) 
 			.catch(e => console.log(e));
 	}
 
 	getGrammar() {
+		this.grammarList = [];
 	 	this.sqLite.create({
 			name: 'notes.db',
 			location: 'default',
@@ -135,7 +145,7 @@ export class GrammarListPage {
 		.then(() => {
 			if (this.grammarList.length == 0) {
 			  console.log('grammar list empty, calling API')
-			  this.updateGrammar();
+			  this.checkLatest();
 			}
 		})
 		
