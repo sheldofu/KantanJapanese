@@ -11,8 +11,7 @@ An Ionic 3 app to aid in Japanese studies - eventually, hopefully, maybe - but f
 	- Saves .3gp locally to device (probably currently android only) and stores reference in DB
 	- Search notes
 
-![List translation notes screenshot](screenshots/kantan2.png)
-![Add translation note 2 screenshot](screenshots/kantan3.png)
+![List translation notes screenshot](screenshots/kantan2.png) ![Add translation note 2 screenshot](screenshots/kantan3.png)
 
 - Grammar Lessons
 	- Lessons stored in SQLite DB on device
