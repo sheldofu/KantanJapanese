@@ -13,4 +13,5 @@ An Ionic 3 app to aid in Japanese studies - eventually, hopefully, maybe - but f
 	- Lessons stored in SQLite DB on device
 	- Updates DB with any new lessons available using API from my KantanAPI project 
 
-![Main menu screenshot](screenshots/kantan1.png) ![List translation notes screenshot](screenshots/kantan2.png) ![Add translation note 2 screenshot](screenshots/kantan3.png) ![Grammar lessons screenshot](screenshots/kantan4.png)
+![Main menu screenshot](screenshots/kantan1.png) ![List translation notes screenshot](screenshots/kantan2.png) 
+![Add translation note 2 screenshot](screenshots/kantan3.png) ![Grammar lessons screenshot](screenshots/kantan4.png)
